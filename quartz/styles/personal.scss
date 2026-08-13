@@ -257,10 +257,10 @@
 
 .pv-home-shell {
   display: grid;
-  padding: 3.5rem 0 5rem;
+  padding: 3.25rem 0 5rem;
   grid-template-columns: 270px minmax(0, 1fr);
   align-items: start;
-  gap: 3.5rem;
+  gap: 2.25rem;
 }
 
 .pv-profile-column {
@@ -274,20 +274,20 @@
 .pv-profile-card,
 .pv-category-card {
   border: 1px solid var(--pv-line);
-  border-radius: 0.9rem;
+  border-radius: 0.78rem;
   background: color-mix(in srgb, var(--pv-card) 94%, transparent);
-  box-shadow: var(--pv-shadow-soft);
+  box-shadow: none;
 }
 
 .pv-profile-card {
-  padding: 1.8rem 1.45rem 1.5rem;
+  padding: 1.55rem 1.35rem 1.4rem;
   text-align: center;
 }
 
 .pv-avatar {
   display: block;
-  width: 6.2rem;
-  height: 6.2rem;
+  width: 5.6rem;
+  height: 5.6rem;
   margin: 0 auto 1.1rem;
   border: 4px solid var(--pv-card);
   border-radius: 50%;
@@ -449,6 +449,31 @@
 
 .pv-home-main {
   min-width: 0;
+}
+
+.pv-archive-heading {
+  display: flex;
+  min-height: 7rem;
+  margin-bottom: 1.15rem;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.pv-archive-heading h1 {
+  margin: 0.35rem 0 0;
+  color: var(--pv-ink);
+  font-family: var(--titleFont, var(--headerFont));
+  font-size: clamp(2.25rem, 5vw, 3.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.pv-archive-heading > p {
+  margin: 0 0 0.25rem;
+  color: var(--pv-muted);
+  font-size: 0.74rem;
+  white-space: nowrap;
 }
 
 .pv-hero {
@@ -619,13 +644,13 @@
 .pv-note-list {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.72rem;
 }
 
 .pv-note-card {
   margin: 0;
   border: 1px solid var(--pv-line);
-  border-radius: 0.78rem;
+  border-radius: 0.72rem;
   background: var(--pv-card);
   transition:
     border-color 160ms ease,
@@ -635,17 +660,14 @@
 
 .pv-note-card:hover {
   border-color: color-mix(in srgb, var(--pv-accent) 35%, var(--pv-line));
-  box-shadow: var(--pv-shadow-soft);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 55, 42, 0.045);
+  transform: translateY(-1px);
 }
 
 .pv-note-link {
-  display: grid;
-  padding: 1.15rem 1.25rem;
+  display: block;
+  padding: 1.3rem 1.4rem 1.2rem;
   color: var(--pv-ink);
-  grid-template-columns: 2.3rem 1fr auto;
-  align-items: center;
-  gap: 1rem;
   text-decoration: none;
 }
 
@@ -665,8 +687,9 @@
 
 .pv-note-meta {
   display: flex;
-  margin-bottom: 0.3rem;
+  margin-top: 0.55rem;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   color: var(--pv-muted);
   font-size: 0.66rem;
@@ -678,17 +701,30 @@
 }
 
 .pv-note-card h3 {
+  position: relative;
   margin: 0;
+  padding-left: 0.78rem;
   color: var(--pv-ink);
   font-family: var(--headerFont);
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   line-height: 1.5;
+}
+
+.pv-note-card h3::before {
+  position: absolute;
+  top: 0.22em;
+  bottom: 0.22em;
+  left: 0;
+  width: 0.2rem;
+  border-radius: 99px;
+  background: var(--pv-accent);
+  content: "";
 }
 
 .pv-note-card p {
   display: -webkit-box;
   overflow: hidden;
-  margin: 0.42rem 0 0;
+  margin: 0.62rem 0 0;
   color: var(--pv-muted);
   font-size: 0.77rem;
   line-height: 1.6;
@@ -921,6 +957,22 @@
     gap: 1.2rem;
   }
 
+  .pv-archive-heading {
+    min-height: auto;
+    margin: 1.1rem 0 1rem;
+    align-items: start;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .pv-archive-heading h1 {
+    font-size: 2.25rem;
+  }
+
+  .pv-archive-heading > p {
+    margin: 0;
+  }
+
   .pv-profile-column {
     position: static;
   }
@@ -996,8 +1048,8 @@
   }
 
   .pv-note-link {
+    display: block;
     padding: 1rem;
-    grid-template-columns: 1fr auto;
   }
 
   .pv-note-index {
