@@ -32,7 +32,7 @@ jobs:
       - name: Check knowledge repo token
         if: env.KNOWLEDGE_REPO_TOKEN == ''
         run: |
-          echo "Missing KNOWLEDGE_REPO_TOKEN secret. Create a fine-grained GitHub token with Contents read access to TuoWang02/Self-Knowledge, 550-ml/OJ, and TuoWang02/Hand-Code, then add it to the Blog repository's Actions secrets."
+          echo "Missing KNOWLEDGE_REPO_TOKEN secret. Create a fine-grained GitHub token with Contents read access to TuoWang02/Self-Knowledge, then add it to the Blog repository's Actions secrets."
           exit 1
       - name: Checkout knowledge vault as Quartz content
         uses: actions/checkout@v4
@@ -40,24 +40,6 @@ jobs:
           repository: TuoWang02/Self-Knowledge
           ref: main
           path: content
-          token: ${{ secrets.KNOWLEDGE_REPO_TOKEN }}
-      - name: Remove nested repository placeholders
-        run: |
-          rm -rf "content/02_手撕代码/01_LeetCode"
-          rm -rf "content/02_手撕代码/02_LLM手撕代码"
-      - name: Checkout LeetCode notes
-        uses: actions/checkout@v4
-        with:
-          repository: 550-ml/OJ
-          ref: main
-          path: content/02_手撕代码/01_LeetCode
-          token: ${{ secrets.KNOWLEDGE_REPO_TOKEN }}
-      - name: Checkout handwritten code notes
-        uses: actions/checkout@v4
-        with:
-          repository: TuoWang02/Hand-Code
-          ref: main
-          path: content/02_手撕代码/02_LLM手撕代码
           token: ${{ secrets.KNOWLEDGE_REPO_TOKEN }}
       - uses: actions/setup-node@v4
         with:
