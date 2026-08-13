@@ -453,6 +453,208 @@
   min-width: 0;
 }
 
+.pv-portal-hero {
+  padding: 3.9rem 0 3.4rem;
+  border-bottom: 1px solid var(--pv-line);
+}
+
+.pv-portal-hero h1 {
+  max-width: 13em;
+  margin: 0.75rem 0 1rem;
+  color: var(--pv-ink);
+  font-family: var(--titleFont, var(--headerFont));
+  font-size: clamp(2.65rem, 5.2vw, 4.35rem);
+  font-weight: 760;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+}
+
+.pv-portal-hero h1 span {
+  display: block;
+  color: var(--pv-accent);
+}
+
+.pv-portal-intro {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--pv-muted);
+  font-size: 0.94rem;
+  line-height: 1.85;
+}
+
+.pv-portal-actions {
+  display: flex;
+  margin-top: 1.65rem;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pv-portal-actions a {
+  display: inline-flex;
+  height: 2.45rem;
+  padding: 0 0.9rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.pv-primary-action {
+  background: var(--pv-accent);
+  color: white;
+}
+
+.pv-primary-action:hover {
+  color: white;
+  filter: brightness(1.04);
+}
+
+.pv-secondary-action {
+  border: 1px solid var(--pv-line);
+  background: var(--pv-card);
+  color: var(--pv-ink);
+}
+
+.pv-secondary-action:hover {
+  color: var(--pv-accent);
+}
+
+.pv-portal-section,
+.pv-portal-latest {
+  padding-top: 2.7rem;
+}
+
+.pv-portal-heading {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pv-portal-heading h2 {
+  margin: 0.3rem 0 0;
+  color: var(--pv-ink);
+  font-family: var(--titleFont, var(--headerFont));
+  font-size: 1.65rem;
+  letter-spacing: -0.025em;
+}
+
+.pv-portal-heading > span {
+  color: var(--pv-muted);
+  font-size: 0.68rem;
+}
+
+.pv-portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.pv-portal-card {
+  display: grid;
+  min-width: 0;
+  min-height: 5.2rem;
+  padding: 1rem;
+  border: 1px solid var(--pv-line);
+  border-radius: 0.65rem;
+  background: var(--pv-card);
+  color: var(--pv-ink);
+  grid-template-columns: 2.15rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.pv-portal-card:hover {
+  border-color: color-mix(in srgb, var(--pv-accent) 38%, var(--pv-line));
+  color: var(--pv-ink);
+  transform: translateY(-1px);
+}
+
+.pv-portal-card-icon {
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.5rem;
+  background: var(--pv-accent-soft);
+  color: var(--pv-accent);
+  font-family: var(--codeFont);
+  font-size: 0.66rem;
+  font-weight: 750;
+  place-items: center;
+}
+
+.pv-portal-card-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.pv-portal-card-copy strong {
+  color: var(--pv-ink);
+  font-size: 0.86rem;
+}
+
+.pv-portal-card-copy small {
+  overflow: hidden;
+  margin-top: 0.28rem;
+  color: var(--pv-muted);
+  font-size: 0.65rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pv-portal-count {
+  color: var(--pv-muted);
+  font-family: var(--codeFont);
+  font-size: 0.65rem;
+}
+
+.pv-latest-list {
+  border-top: 1px solid var(--pv-line);
+}
+
+.pv-latest-list > a {
+  display: grid;
+  padding: 0.9rem 0.2rem;
+  border-bottom: 1px solid var(--pv-line);
+  color: var(--pv-ink);
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.pv-latest-list > a:hover {
+  color: var(--pv-accent);
+}
+
+.pv-latest-list > a > span:first-child {
+  overflow: hidden;
+  font-family: var(--headerFont);
+  font-size: 0.86rem;
+  font-weight: 620;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pv-latest-list small {
+  color: var(--pv-muted);
+  font-size: 0.64rem;
+  white-space: nowrap;
+}
+
+.pv-latest-list > a > span:last-child {
+  color: var(--pv-accent);
+  font-size: 0.75rem;
+}
+
 .pv-archive-heading {
   display: flex;
   min-height: 7rem;
@@ -968,6 +1170,27 @@
     padding: 1.5rem 0 3.5rem;
     grid-template-columns: 1fr;
     gap: 1.2rem;
+  }
+
+  .pv-portal-hero {
+    padding: 2.6rem 0 2.4rem;
+  }
+
+  .pv-portal-hero h1 {
+    font-size: clamp(2.5rem, 12vw, 3.35rem);
+  }
+
+  .pv-portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-latest-list > a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.7rem;
+  }
+
+  .pv-latest-list small {
+    display: none;
   }
 
   .pv-archive-heading {

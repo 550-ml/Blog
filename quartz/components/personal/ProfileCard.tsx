@@ -1,11 +1,7 @@
 import { QuartzComponent, QuartzComponentProps } from "../types"
-import { buildSections, hrefFrom, profile } from "./siteData"
-import { FullSlug } from "../../util/path"
+import { profile } from "./siteData"
 
-const ProfileCard: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
-  const current = (fileData.slug ?? "index") as FullSlug
-  const sections = buildSections(allFiles)
-
+const ProfileCard: QuartzComponent = (_props: QuartzComponentProps) => {
   return (
     <aside class="pv-profile-column" id="about">
       <section class="pv-profile-card">
@@ -31,29 +27,6 @@ const ProfileCard: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
             </div>
           </details>
         </div>
-      </section>
-
-      <section class="pv-category-card">
-        <div class="pv-card-heading">
-          <span>知识领域</span>
-          <small>{sections.length} 个分类</small>
-        </div>
-        <ul>
-          {sections.map((section) => {
-            const count = allFiles.filter((file) =>
-              file.slug?.startsWith(`${section.slug}/`),
-            ).length
-            return (
-              <li>
-                <a href={hrefFrom(current, section.slug)}>
-                  <span class="pv-category-icon">{section.icon}</span>
-                  <span>{section.label}</span>
-                  <small>{count}</small>
-                </a>
-              </li>
-            )
-          })}
-        </ul>
       </section>
     </aside>
   )
