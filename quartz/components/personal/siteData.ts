@@ -18,7 +18,7 @@ const sectionMeta = [
 ]
 
 export const profile = {
-  name: "TuoWang",
+  name: "Want",
   role: "LLM · 强化学习 · 工程实践",
   bio: "记录大模型、工程实践、代码实现与项目复盘，也收藏一路上真正有用的经验。",
   avatar: "https://avatars.githubusercontent.com/u/94170205?v=4",

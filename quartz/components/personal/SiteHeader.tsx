@@ -1,6 +1,6 @@
 import { QuartzComponent, QuartzComponentProps } from "../types"
 import { FullSlug } from "../../util/path"
-import { buildSections, hrefFrom } from "./siteData"
+import { buildSections, hrefFrom, profile } from "./siteData"
 
 const SiteHeader: QuartzComponent = ({
   fileData,
@@ -16,11 +16,8 @@ const SiteHeader: QuartzComponent = ({
     <header class="pv-site-header">
       <div class="pv-header-inner">
         <a class="pv-brand" href={homeHref} aria-label={`${cfg.pageTitle} 首页`}>
-          <span class="pv-brand-mark">王</span>
-          <span class="pv-brand-copy">
-            <strong>{cfg.pageTitle}</strong>
-            <small>Notes &amp; Ideas</small>
-          </span>
+          <img class="pv-brand-avatar" src={profile.avatar} alt="" />
+          <strong>{profile.name} 的博客</strong>
         </a>
 
         <nav class="pv-main-nav" aria-label="主要导航">
@@ -30,7 +27,6 @@ const SiteHeader: QuartzComponent = ({
           {sections.map((section) => (
             <details class="pv-nav-group">
               <summary>
-                <span class="pv-nav-icon">{section.icon}</span>
                 {section.label}
                 <span class="pv-nav-chevron">⌄</span>
               </summary>

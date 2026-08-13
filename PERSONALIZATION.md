@@ -1,6 +1,6 @@
 # Personalization
 
-这个仓库是 TuoWang 个人知识库网站的 Quartz 5 外壳。日常只需要在 Obsidian 知识库里写 Markdown；推送知识库后，由 GitHub Actions 拉取内容并发布网站。
+这个仓库是 Want 个人知识库网站的 Quartz 5 外壳。日常只需要在 Obsidian 知识库里写 Markdown；推送知识库后，由 GitHub Actions 拉取内容并发布网站。
 
 ## 常用修改位置
 

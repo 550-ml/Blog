@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 
 configuration:
-  pageTitle: TuoWang
+  pageTitle: Want
   pageTitleSuffix: " · 个人知识库"
   enableSPA: true
   enablePopovers: true
