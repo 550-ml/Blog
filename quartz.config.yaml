@@ -1,0 +1,240 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+
+configuration:
+  pageTitle: TuoWang
+  pageTitleSuffix: " · 个人知识库"
+  enableSPA: true
+  enablePopovers: true
+  analytics: null
+  locale: zh-CN
+  baseUrl: TuoWang02.github.io/Blog
+  ignorePatterns:
+    - private
+    - templates
+    - .obsidian
+    - AGENTS.md
+    - AGENT.md
+  theme:
+    fontOrigin: googleFonts
+    cdnCaching: true
+    typography:
+      title: Noto Serif SC
+      header: Noto Serif SC
+      body: Noto Sans SC
+      code: JetBrains Mono
+    colors:
+      lightMode:
+        light: "#fbfaf7"
+        lightgray: "#ece6df"
+        gray: "#a69d94"
+        darkgray: "#514b46"
+        dark: "#26211d"
+        secondary: "#b93445"
+        tertiary: "#d96575"
+        highlight: rgba(185, 52, 69, 0.10)
+        textHighlight: "#f5d97a66"
+      darkMode:
+        light: "#181615"
+        lightgray: "#332e2b"
+        gray: "#8f8580"
+        darkgray: "#d8d0ca"
+        dark: "#f6f0eb"
+        secondary: "#ef8793"
+        tertiary: "#f2a2aa"
+        highlight: rgba(239, 135, 147, 0.13)
+        textHighlight: "#9d792f66"
+
+plugins:
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - tags
+      excludedProperties:
+        - author
+        - type
+      hidePropertiesView: true
+      delimiters: "---"
+      language: yaml
+    order: 5
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+    options:
+      defaultDateType: modified
+      priority:
+        - frontmatter
+        - git
+        - filesystem
+    order: 10
+  - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+    options:
+      theme:
+        light: github-light
+        dark: github-dark
+      keepBackground: false
+    order: 20
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      comments: true
+      highlight: true
+      wikilinks: true
+      callouts: true
+      mermaid: true
+      parseTags: true
+      parseArrows: true
+      parseBlockReferences: true
+      enableInHtmlEmbed: false
+      enableYouTubeEmbed: true
+      enableVideoEmbed: true
+      enableCheckbox: true
+    order: 30
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+  - source: "@quartz-community/unlisted-pages"
+    enabled: true
+    options: {}
+    order: 45
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    order: 50
+    layout:
+      position: right
+      priority: 30
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    options:
+      markdownLinkResolution: shortest
+    order: 60
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+  - source: "@quartz-community/latex"
+    enabled: true
+    options:
+      renderEngine: katex
+    order: 80
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+  - source: "@quartz-community/favicon"
+    enabled: true
+  - source: "@quartz-community/og-image"
+    enabled: true
+  - source: "@quartz-community/content-page"
+    enabled: true
+  - source: "@quartz-community/folder-page"
+    enabled: true
+  - source: "@quartz-community/tag-page"
+    enabled: true
+  - source: "@quartz-community/canvas-page"
+    enabled: true
+  - source: "@quartz-community/bases-page"
+    enabled: true
+    options: {}
+    order: 50
+  - source: "@quartz-community/quartz-fonts"
+    enabled: true
+  - source: "@quartz-community/explorer"
+    enabled: true
+    options:
+      title: 知识目录
+      folderClickBehavior: collapse
+      folderDefaultState: collapsed
+      useSavedState: true
+    layout:
+      position: left
+      priority: 50
+  - source: "@quartz-community/graph"
+    enabled: true
+    layout:
+      position: right
+      priority: 10
+  - source: "@quartz-community/search"
+    enabled: true
+    layout:
+      position: header
+      priority: 20
+  - source: "@quartz-community/darkmode"
+    enabled: true
+    layout:
+      position: header
+      priority: 30
+  - source: "@quartz-community/reader-mode"
+    enabled: true
+    layout:
+      position: header
+      priority: 40
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
+  - source: "@quartz-community/content-meta"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+  - source: "@quartz-community/tag-list"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 30
+      condition: has-tags
+  - source: "@quartz-community/breadcrumbs"
+    enabled: true
+    options:
+      rootName: 首页
+      spacerSymbol: /
+      resolveFrontmatterTitle: true
+      showCurrentPage: false
+    layout:
+      position: beforeBody
+      priority: 5
+      condition: not-index
+  - source: "@quartz-community/footer"
+    enabled: true
+    options:
+      links:
+        GitHub: https://github.com/TuoWang02
+        RSS: /Blog/index.xml
+    layout:
+      position: footer
+      priority: 50
+
+layout:
+  byPageType:
+    content:
+      template: personal
+    folder:
+      template: personal
+      exclude:
+        - reader-mode
+    tag:
+      template: personal
+      exclude:
+        - reader-mode
+    canvas:
+      template: canvas
+    bases:
+      template: personal
+    "404":
+      template: minimal
+      positions:
+        beforeBody: []
+        left: []
+        right: []
