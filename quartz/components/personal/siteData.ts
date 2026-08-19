@@ -25,11 +25,21 @@ export const profile = {
   github: "https://github.com/TuoWang02",
 }
 
+const segmentLabels: Record<string, string> = {
+  leetcode: "LeetCode",
+  llm手撕代码: "LLM 手撕代码",
+  pythonic: "Pythonic",
+  retool: "Retool",
+  "swe rl": "SWE-RL",
+  medicalgpt: "MedicalGPT",
+}
+
 export function cleanSegment(value: string): string {
-  return decodeURIComponent(value)
+  const cleaned = decodeURIComponent(value)
     .replace(/^\d{2}[-_]/, "")
     .replace(/[-_]+/g, " ")
     .trim()
+  return segmentLabels[cleaned.toLowerCase()] ?? cleaned
 }
 
 function orderedMeta(segment: string) {

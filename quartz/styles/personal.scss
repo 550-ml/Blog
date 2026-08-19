@@ -553,28 +553,36 @@
   gap: 0.7rem;
 }
 
-.pv-portal-card {
-  display: grid;
+.pv-topic-group {
   min-width: 0;
-  min-height: 5.2rem;
-  padding: 1rem;
+  padding: 0.95rem;
   border: 1px solid var(--pv-line);
   border-radius: 0.65rem;
   background: var(--pv-card);
+}
+
+.pv-topic-group-heading {
+  display: grid;
   color: var(--pv-ink);
   grid-template-columns: 2.15rem minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+}
+
+.pv-topic-group {
   transition:
     border-color 160ms ease,
     transform 160ms ease;
 }
 
-.pv-portal-card:hover {
+.pv-topic-group:hover {
   border-color: color-mix(in srgb, var(--pv-accent) 38%, var(--pv-line));
-  color: var(--pv-ink);
   transform: translateY(-1px);
+}
+
+.pv-topic-group-heading:hover {
+  color: var(--pv-ink);
 }
 
 .pv-portal-card-icon {
@@ -610,10 +618,62 @@
   white-space: nowrap;
 }
 
-.pv-portal-count {
+.pv-topic-arrow {
+  color: var(--pv-muted);
+  font-size: 0.85rem;
+}
+
+.pv-topic-links {
+  display: grid;
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--pv-line);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.3rem 0.45rem;
+}
+
+.pv-topic-links a {
+  display: flex;
+  min-width: 0;
+  padding: 0.42rem 0.48rem;
+  border-radius: 0.38rem;
+  color: var(--pv-muted);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  font-size: 0.69rem;
+  text-decoration: none;
+}
+
+.pv-topic-links a:hover {
+  background: var(--pv-accent-soft);
+  color: var(--pv-accent);
+}
+
+.pv-topic-links span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pv-topic-links small {
   color: var(--pv-muted);
   font-family: var(--codeFont);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
+}
+
+.pv-topic-empty {
+  display: block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.45rem 0.1rem;
+  border-top: 1px solid var(--pv-line);
+  color: var(--pv-muted);
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+
+.pv-topic-empty:hover {
+  color: var(--pv-accent);
 }
 
 .pv-latest-list {
@@ -1181,6 +1241,10 @@
   }
 
   .pv-portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-topic-links {
     grid-template-columns: 1fr;
   }
 

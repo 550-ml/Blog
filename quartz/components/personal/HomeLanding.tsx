@@ -62,20 +62,42 @@ const HomeLanding: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzCompone
         <div class="pv-portal-grid">
           {sections.map((section) => {
             const count = notes.filter((note) => note.slug?.startsWith(`${section.slug}/`)).length
+            if (count === 0) return null
+
+            const childEntries = section.children
+              .map((child) => ({
+                ...child,
+                count: notes.filter((note) => note.slug?.startsWith(`${child.slug}/`)).length,
+              }))
+              .filter((child) => child.count > 0)
+
             return (
-              <a class="pv-portal-card" href={hrefFrom(current, section.slug)}>
-                <span class="pv-portal-card-icon">{section.icon}</span>
-                <span class="pv-portal-card-copy">
-                  <strong>{section.label}</strong>
-                  <small>
-                    {section.children
-                      .slice(0, 3)
-                      .map((child) => child.label)
-                      .join(" · ") || "随手记录与思考"}
-                  </small>
-                </span>
-                <span class="pv-portal-count">{count}</span>
-              </a>
+              <article class="pv-topic-group">
+                <a class="pv-topic-group-heading" href={hrefFrom(current, section.slug)}>
+                  <span class="pv-portal-card-icon">{section.icon}</span>
+                  <span class="pv-portal-card-copy">
+                    <strong>{section.label}</strong>
+                    <small>{count} 篇笔记</small>
+                  </span>
+                  <span class="pv-topic-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+                {childEntries.length > 0 ? (
+                  <div class="pv-topic-links">
+                    {childEntries.map((child) => (
+                      <a href={hrefFrom(current, child.slug)}>
+                        <span>{child.label}</span>
+                        <small>{child.count}</small>
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <a class="pv-topic-empty" href={hrefFrom(current, section.slug)}>
+                    浏览这个领域
+                  </a>
+                )}
+              </article>
             )
           })}
         </div>
