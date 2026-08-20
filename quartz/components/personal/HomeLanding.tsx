@@ -22,7 +22,7 @@ const HomeLanding: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
   const primarySection = sections.find((section) => section.label === "大模型") ?? sections[0]
 
   return (
-    <main class="pv-home-main">
+    <main class="pv-home-main center">
       <section class="pv-portal-hero">
         <p class="pv-eyebrow">HELLO, I&apos;M WANT</p>
         <h1>欢迎来到我的个人主页</h1>
