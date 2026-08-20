@@ -190,17 +190,6 @@ plugins:
       position: beforeBody
       priority: 30
       condition: has-tags
-  - source: "@quartz-community/breadcrumbs"
-    enabled: true
-    options:
-      rootName: 首页
-      spacerSymbol: /
-      resolveFrontmatterTitle: true
-      showCurrentPage: false
-    layout:
-      position: beforeBody
-      priority: 5
-      condition: not-index
   - source: "@quartz-community/footer"
     enabled: true
     options:
