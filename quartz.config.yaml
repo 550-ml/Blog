@@ -3,7 +3,7 @@
 configuration:
   pageTitle: Want
   pageTitleSuffix: " · 个人知识库"
-  enableSPA: true
+  enableSPA: false
   enablePopovers: true
   analytics: null
   locale: zh-CN
