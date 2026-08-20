@@ -1,8 +1,7 @@
 import { QuartzComponent, QuartzComponentProps } from "../types"
 import { byDateAndAlphabetical } from "../PageList"
-import { Date, getDate } from "../Date"
 import { FullSlug } from "../../util/path"
-import { buildSections, cleanSegment, hrefFrom } from "./siteData"
+import { buildSections, hrefFrom } from "./siteData"
 
 function visibleNote(slug?: string, title?: string, filePath?: string): boolean {
   if (!slug || slug === "index" || slug.startsWith("tags/")) return false
@@ -14,29 +13,21 @@ function visibleNote(slug?: string, title?: string, filePath?: string): boolean 
   return true
 }
 
-function displayTitle(title?: string): string {
-  return title?.replace(/^\d{2}[_-]/, "") ?? "未命名笔记"
-}
-
-const HomeLanding: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
+const HomeLanding: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
   const current = (fileData.slug ?? "index") as FullSlug
   const sections = buildSections(allFiles)
   const notes = allFiles
     .filter((file) => visibleNote(file.slug, file.frontmatter?.title, file.filePath))
     .sort(byDateAndAlphabetical())
-  const recent = notes.slice(0, 4)
   const primarySection = sections.find((section) => section.label === "大模型") ?? sections[0]
 
   return (
     <main class="pv-home-main">
       <section class="pv-portal-hero">
         <p class="pv-eyebrow">HELLO, I&apos;M WANT</p>
-        <h1>
-          欢迎来到我的
-          <span>数字花园。</span>
-        </h1>
+        <h1>欢迎来到我的个人主页</h1>
         <p class="pv-portal-intro">
-          这里是我的个人主页，也是知识与想法的入口。你可以从一个感兴趣的领域开始，慢慢逛。
+          这里记录我的工程实践、手撕代码与大模型学习。选一个感兴趣的方向，慢慢逛。
         </p>
         <div class="pv-portal-actions">
           {primarySection && (
@@ -98,37 +89,6 @@ const HomeLanding: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzCompone
                   </a>
                 )}
               </article>
-            )
-          })}
-        </div>
-      </section>
-
-      <section class="pv-portal-latest" aria-label="最近更新">
-        <div class="pv-portal-heading">
-          <div>
-            <p class="pv-eyebrow">RECENTLY</p>
-            <h2>最近更新</h2>
-          </div>
-        </div>
-        <div class="pv-latest-list">
-          {recent.map((note) => {
-            const top = note.slug?.split("/")[0] ?? ""
-            const section = sections.find((item) => item.slug === top)
-            const date = note.defaultDateType ? getDate(note) : undefined
-            return (
-              <a href={hrefFrom(current, note.slug!)}>
-                <span>{displayTitle(note.frontmatter?.title)}</span>
-                <small>
-                  {section?.label ?? cleanSegment(top)}
-                  {date && (
-                    <>
-                      <span aria-hidden="true"> · </span>
-                      <Date date={date} locale={cfg.locale} />
-                    </>
-                  )}
-                </small>
-                <span aria-hidden="true">↗</span>
-              </a>
             )
           })}
         </div>

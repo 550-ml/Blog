@@ -454,24 +454,19 @@
 }
 
 .pv-portal-hero {
-  padding: 3.9rem 0 3.4rem;
+  padding: 3.25rem 0 2.9rem;
   border-bottom: 1px solid var(--pv-line);
 }
 
 .pv-portal-hero h1 {
-  max-width: 13em;
+  max-width: none;
   margin: 0.75rem 0 1rem;
   color: var(--pv-ink);
   font-family: var(--titleFont, var(--headerFont));
-  font-size: clamp(2.65rem, 5.2vw, 4.35rem);
+  font-size: clamp(2.45rem, 4.25vw, 3.75rem);
   font-weight: 760;
-  letter-spacing: -0.055em;
-  line-height: 1.2;
-}
-
-.pv-portal-hero h1 span {
-  display: block;
-  color: var(--pv-accent);
+  letter-spacing: -0.045em;
+  line-height: 1.15;
 }
 
 .pv-portal-intro {
@@ -521,9 +516,9 @@
   color: var(--pv-accent);
 }
 
-.pv-portal-section,
-.pv-portal-latest {
+.pv-portal-section {
   padding-top: 2.7rem;
+  padding-bottom: 4.5rem;
 }
 
 .pv-portal-heading {
