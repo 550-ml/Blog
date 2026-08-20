@@ -37,7 +37,7 @@ export const PersonalFrame: PageFrame = {
                 <BodyComponent {...componentData} />
               ))}
             </aside>
-            <main class="pv-article-column">
+            <main class="pv-article-column center">
               <div class="pv-article-header popover-hint">
                 {beforeBody.map((BodyComponent) => (
                   <BodyComponent {...componentData} />
