@@ -6,10 +6,14 @@ const SiteHeader: QuartzComponent = ({
   fileData,
   allFiles,
   cfg,
+  ctx,
   children,
 }: QuartzComponentProps) => {
   const current = (fileData.slug ?? "index") as FullSlug
-  const homeHref = hrefFrom(current, "index" as FullSlug)
+  const configuredHome = cfg.baseUrl
+    ? `${new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")}/`
+    : "/"
+  const homeHref = ctx.argv.serve ? "/" : configuredHome
   const sections = buildSections(allFiles)
 
   return (
