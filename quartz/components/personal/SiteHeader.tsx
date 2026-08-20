@@ -35,11 +35,16 @@ const SiteHeader: QuartzComponent = ({
                 <span class="pv-nav-chevron">⌄</span>
               </summary>
               <div class="pv-nav-menu">
-                <a class="pv-nav-all" href={hrefFrom(current, section.slug)}>
+                <a
+                  class="pv-nav-all"
+                  href={hrefFrom(current, section.slug, cfg.baseUrl, ctx.argv.serve)}
+                >
                   查看全部{section.label}
                 </a>
                 {section.children.slice(0, 10).map((child) => (
-                  <a href={hrefFrom(current, child.slug)}>{child.label}</a>
+                  <a href={hrefFrom(current, child.slug, cfg.baseUrl, ctx.argv.serve)}>
+                    {child.label}
+                  </a>
                 ))}
               </div>
             </details>

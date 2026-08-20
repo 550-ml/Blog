@@ -13,7 +13,7 @@ function visibleNote(slug?: string, title?: string, filePath?: string): boolean 
   return true
 }
 
-const HomeLanding: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
+const HomeLanding: QuartzComponent = ({ fileData, allFiles, cfg, ctx }: QuartzComponentProps) => {
   const current = (fileData.slug ?? "index") as FullSlug
   const sections = buildSections(allFiles)
   const notes = allFiles
@@ -31,7 +31,10 @@ const HomeLanding: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
         </p>
         <div class="pv-portal-actions">
           {primarySection && (
-            <a class="pv-primary-action" href={hrefFrom(current, primarySection.slug)}>
+            <a
+              class="pv-primary-action"
+              href={hrefFrom(current, primarySection.slug, cfg.baseUrl, ctx.argv.serve)}
+            >
               开始阅读
               <span>→</span>
             </a>
@@ -64,7 +67,10 @@ const HomeLanding: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
 
             return (
               <article class="pv-topic-group">
-                <a class="pv-topic-group-heading" href={hrefFrom(current, section.slug)}>
+                <a
+                  class="pv-topic-group-heading"
+                  href={hrefFrom(current, section.slug, cfg.baseUrl, ctx.argv.serve)}
+                >
                   <span class="pv-portal-card-icon">{section.icon}</span>
                   <span class="pv-portal-card-copy">
                     <strong>{section.label}</strong>
@@ -77,14 +83,17 @@ const HomeLanding: QuartzComponent = ({ fileData, allFiles }: QuartzComponentPro
                 {childEntries.length > 0 ? (
                   <div class="pv-topic-links">
                     {childEntries.map((child) => (
-                      <a href={hrefFrom(current, child.slug)}>
+                      <a href={hrefFrom(current, child.slug, cfg.baseUrl, ctx.argv.serve)}>
                         <span>{child.label}</span>
                         <small>{child.count}</small>
                       </a>
                     ))}
                   </div>
                 ) : (
-                  <a class="pv-topic-empty" href={hrefFrom(current, section.slug)}>
+                  <a
+                    class="pv-topic-empty"
+                    href={hrefFrom(current, section.slug, cfg.baseUrl, ctx.argv.serve)}
+                  >
                     浏览这个领域
                   </a>
                 )}

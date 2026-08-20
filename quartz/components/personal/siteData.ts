@@ -1,4 +1,4 @@
-import { FullSlug, resolveRelative } from "../../util/path"
+import { FullSlug, resolveRelative, simplifySlug } from "../../util/path"
 import { QuartzPluginData } from "../../plugins/vfile"
 
 export type SiteSection = {
@@ -80,6 +80,16 @@ export function buildSections(allFiles: QuartzPluginData[]): SiteSection[] {
     })
 }
 
-export function hrefFrom(current: FullSlug, target: FullSlug): string {
+export function hrefFrom(
+  current: FullSlug,
+  target: FullSlug,
+  baseUrl?: string,
+  serve = false,
+): string {
+  if (!serve && baseUrl) {
+    const basePath = new URL(`https://${baseUrl}`).pathname.replace(/\/$/, "")
+    return `${basePath}/${simplifySlug(target)}`
+  }
+
   return resolveRelative(current, target)
 }
